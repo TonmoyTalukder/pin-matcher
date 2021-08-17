@@ -37,6 +37,8 @@ document.getElementById('key-pad').addEventListener('click', function(event){
     }
 });
 
+let clicks = 3;
+
 function verifyPin(){
     const pin = document.getElementById('display-pin').value;
     const typedNumbers = document.getElementById('typed-numbers').value;
@@ -51,4 +53,12 @@ function verifyPin(){
         successMessage.style.display = 'none';
         failError.style.display = 'block';
     }
+
+    clicks -= 1;
+    if(clicks == 0){
+        generatePin();
+        clicks = 3;
+        document.getElementById("action-left").innerHTML = clicks;
+    }
+    else document.getElementById("action-left").innerHTML = clicks;
 }
